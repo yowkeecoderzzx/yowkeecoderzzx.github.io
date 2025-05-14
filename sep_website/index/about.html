@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About The Creators | Juan Komerse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(121, 85, 72, 0.8), rgba(126, 69, 49, 0.8)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(121, 85, 72, 0.2);
+        }
+        .timeline-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 100%;
+            height: 100%;
+            width: 2px;
+            background: #9e7264;
+        }
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-amber-50 text-maroon-900">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <i class="fas fa-store text-2xl text-maroon-700 mr-2"></i>
+                        <span class="text-xl font-bold text-maroon-800">Juan Komerse</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-maroon-600 hover:text-maroon-900 transition">Home</a>
+                    <a href="index.html" class="text-maroon-600 hover:text-maroon-900 transition">Products</a>
+                    <a href="about.html" class="font-medium text-maroon-800 border-b-2 border-maroon-700">About</a>
+                    <a href="login.html" class="text-maroon-600 hover:text-maroon-900 transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-maroon-600 hover:text-maroon-900">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Meet The Creators</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto text-amber-100">
+                Passionate individuals dedicated to revolutionizing your e-commerce experience
+            </p>
+        </div>
+    </div>
+
+    <!-- Our Story Section -->
+    <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-maroon-800 mb-4">Our Story</h2>
+            <div class="w-20 h-1 bg-maroon-600 mx-auto mb-6"></div>
+            <p class="text-lg text-maroon-700 max-w-4xl mx-auto">
+               Juan Komerse kicked off in 2025 with just a small team of e-commerce fans who wanted to make shopping more personal and ethical.
+                Now, we're serving thousands of happy customers—still sticking to what matters most:
+                quality, sustainability, and making sure you're satisfied.
+                We're all about keeping real Filipino dishes alive and tasty, just the way they should be.
+            </p>
+        </div>
+
+        <div class="relative">
+            <!-- Timeline -->
+            <div class="space-y-8">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item relative pl-16">
+                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-maroon-700 flex items-center justify-center text-white">
+                        <i class="fas fa-lightbulb text-xl"></i>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-maroon-800 mb-2">The Idea</h3>
+                        <p class="text-maroon-700">June 2024 - Our founders identified a gap in the market for personalized e-commerce experiences that prioritize both quality and ethical sourcing.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item relative pl-16">
+                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-maroon-700 flex items-center justify-center text-white">
+                        <i class="fas fa-rocket text-xl"></i>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-maroon-800 mb-2">Launch</h3>
+                        <p class="text-maroon-700">December 2020 - Juan Komerse officially launched with just 6 products from local artisans and small businesses.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item relative pl-16">
+                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-maroon-700 flex items-center justify-center text-white">
+                        <i class="fas fa-users text-xl"></i>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-maroon-800 mb-2">First 1,000 Customers</h3>
+                        <p class="text-maroon-700">March 2021 - We celebrated reaching our first major milestone with 1,000 satisfied customers.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item relative pl-16">
+                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-maroon-700 flex items-center justify-center text-white">
+                        <i class="fas fa-award text-xl"></i>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-maroon-800 mb-2">Sustainability Award</h3>
+                        <p class="text-maroon-700">October 2022 - Recognized as "Most Sustainable E-Commerce Platform" by the Green Business Council.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="bg-maroon-50 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-maroon-800 mb-4">Our Team</h2>
+                <div class="w-20 h-1 bg-maroon-600 mx-auto mb-6"></div>
+                <p class="text-lg text-maroon-700 max-w-4xl mx-auto">
+                    Meet the passionate individuals behind Juan Komerse. We're a diverse team united by our commitment to excellence.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" 
+                         alt="Founder" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-maroon-800">SUBA, MIYUUKI JOHNRIC</h3>
+                        <p class="text-maroon-600 mb-4">WEB DEVELOPER</p>
+                        <p class="text-maroon-700 mb-4">Visionary leader with 15+ years in e-commerce and sustainable business practices.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon text-maroon-600 hover:text-maroon-800 transition">
+                                <i class="fab fa-linkedin-in text-lg"></i>
+                            </a>
+                            <a href="#" class="social-icon text-maroon-600 hover:text-maroon-800 transition">
+                                <i class="fab fa-twitter text-lg"></i>
+                            </a>
+                            <a href="#" class="social-icon text-maroon-600 hover:text-maroon-800 transition">
+                                <i class="fas fa-envelope text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="img/img15.jpg" 
+                                                             alt="Founder" class="w-full h-64 object-cover">
+
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-maroon-800">GLEABO, KENNETH</h3>
+                        <p class="text-maroon-600 mb-4">WEB DEVELOPER</p>
+                        <p class="text-maroon-700 mb-4">Tech innovator specializing in AI-driven personalization and seamless UX.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon text-maroon-600 hover:text-maroon-800 transition">
+                                <i class="fab fa-linkedin-in text-lg"></i>
+                            </a>
+                            <a href="#" class="social-icon text-maroon-600 hover:text-maroon-800 transition">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                            <a href="#" class="social-icon text-maroon-600 hover:text-maroon-800 transition">
+                                <i class="fas fa-envelope text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+    <!-- Values Section -->
+    <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-maroon-800 mb-4">Our Values</h2>
+            <div class="w-20 h-1 bg-maroon-600 mx-auto mb-6"></div>
+            <p class="text-lg text-maroon-700 max-w-4xl mx-auto">
+                These principles guide every decision we make and every product we offer.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Value 1 -->
+            <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                <div class="w-16 h-16 bg-maroon-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-heart text-maroon-700 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-maroon-800 mb-3">Passion</h3>
+                <p class="text-maroon-700">
+                    We're deeply passionate about creating exceptional experiences for our customers and supporting ethical producers.
+                </p>
+            </div>
+
+            <!-- Value 2 -->
+            <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                <div class="w-16 h-16 bg-maroon-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-leaf text-maroon-700 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-maroon-800 mb-3">Sustainability</h3>
+                <p class="text-maroon-700">
+                    We prioritize eco-friendly practices, from packaging to partnerships with sustainable brands.
+                </p>
+            </div>
+
+            <!-- Value 3 -->
+            <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                <div class="w-16 h-16 bg-maroon-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-lightbulb text-maroon-700 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-maroon-800 mb-3">Innovation</h3>
+                <p class="text-maroon-700">
+                    We constantly seek new ways to improve and stay ahead in the ever-evolving e-commerce landscape.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-maroon-800 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">Join Our Journey</h2>
+            <p class="text-xl text-amber-100 max-w-3xl mx-auto mb-8">
+                We're always looking for talented individuals who share our vision. Check out our current openings.
+            </p>
+            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-maroon-900 font-medium py-3 px-8 rounded-lg transition duration-200">
+                View Careers
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-maroon-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-store text-2xl text-amber-300 mr-2"></i>
+                        <span class="text-xl font-bold">Juan Komerse</span>
+                    </div>
+                    <p class="text-amber-100">
+                        Redefining e-commerce with passion, sustainability, and innovation.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-amber-100 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-amber-100 hover:text-white transition">Products</a></li>
+                        <li><a href="#" class="text-amber-100 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-amber-100 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Connect</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-amber-100 hover:text-white transition text-xl">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-amber-100 hover:text-white transition text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-amber-100 hover:text-white transition text-xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-amber-100 hover:text-white transition text-xl">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <p class="text-amber-100">hello@juankomerse.com</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-amber-100 mb-4">Subscribe for updates and exclusive offers</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-maroon-900">
+                        <button class="bg-amber-500 hover:bg-amber-600 text-maroon-900 px-4 py-2 rounded-r-lg transition duration-200">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-maroon-700 mt-12 pt-8 text-center text-amber-100">
+                <p>&copy; 2023 Juan Komerse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for team cards when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.team-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Mobile menu toggle would go here
+        // document.querySelector('[aria-controls="mobile-menu"]').addEventListener('click', function() {
+        //     // Mobile menu toggle functionality
+        // });
+    </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Juan Komerse - Cart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .cart-item:hover { background-color: #FEEBD9; }
+    .sidebar { background-color: #FFF8F0; border-right: 1px solid #C19A6B; }
+  </style>
+</head>
+<body class="bg-amber-50 text-maroon-800">
+<div class="flex">
+  <!-- Sidebar -->
+  <div class="sidebar w-64 h-screen fixed shadow-lg">
+    <div class="p-6">
+      <div class="flex items-center space-x-2 mb-8">
+        <i class="fas fa-store text-2xl text-maroon-800"></i>
+        <h1 class="text-2xl font-bold text-maroon-800">Juan Komerse</h1>
+      </div>
+      <nav class="space-y-4">
+        <a href="index.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-maroon-100 text-maroon-800 font-medium">
+          <i class="fas fa-home"></i><span>Home</span>
+        </a>
+        <a href="index.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-maroon-100 text-maroon-800 font-medium">
+          <i class="fas fa-box-open"></i><span>Products</span>
+        </a>
+        <a href="cart.html" class="flex items-center space-x-3 p-3 rounded-lg bg-maroon-100 text-maroon-800 font-medium">
+          <i class="fas fa-shopping-cart"></i><span>Cart</span>
+        </a>
+        <a href="about.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-maroon-100 text-maroon-800 font-medium">
+          <i class="fas fa-info-circle"></i><span>About</span>
+        </a>
+        <a href="login.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-maroon-100 text-maroon-800 font-medium">
+          <i class="fas fa-envelope"></i><span>Contact</span>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="ml-64 flex-1 px-8 py-10">
+    <h1 class="text-3xl font-bold mb-8">Your Shopping Cart</h1>
+    <div id="cart-items" class="space-y-6">
+      <!-- Cart items will be dynamically inserted here -->
+    </div>
+
+    <!-- Add Item Form -->
+    <div class="mt-10 max-w-md border p-4 rounded bg-white">
+      <h2 class="text-xl font-semibold mb-4">Add New Item</h2>
+      <form id="add-item-form" class="space-y-4">
+        <div>
+          <label for="item-name" class="block font-medium mb-1">Item Name</label>
+          <input type="text" id="item-name" class="w-full border rounded px-3 py-2" required />
+        </div>
+        <div>
+          <label for="item-desc" class="block font-medium mb-1">Description</label>
+          <input type="text" id="item-desc" class="w-full border rounded px-3 py-2" required />
+        </div>
+        <div>
+          <label for="item-price" class="block font-medium mb-1">Price ($)</label>
+          <input type="number" id="item-price" class="w-full border rounded px-3 py-2" step="0.01" min="0" required />
+        </div>
+        <div>
+          <label for="item-qty" class="block font-medium mb-1">Quantity</label>
+          <input type="number" id="item-qty" class="w-full border rounded px-3 py-2" min="1" value="1" required />
+        </div>
+        <button type="submit" class="bg-maroon-700 text-white px-6 py-2 rounded hover:bg-maroon-800">Add Item</button>
+      </form>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="mt-10 border-t pt-6 max-w-md ml-auto space-y-4">
+      <div class="flex justify-between"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+      <div class="flex justify-between"><span>Tax (12%)</span><span id="tax">$0.00</span></div>
+      <div class="flex justify-between font-bold text-lg"><span>Total</span><span id="total">$0.00</span></div>
+    </div>
+
+    <div class="mt-6 text-right">
+      <button class="bg-maroon-700 text-white px-6 py-3 rounded hover:bg-maroon-800">Checkout</button>
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const TAX_RATE = 0.12;
+  const cartItemsContainer = document.getElementById('cart-items');
+  const addItemForm = document.getElementById('add-item-form');
+  const subtotalEl = document.getElementById('subtotal');
+  const taxEl = document.getElementById('tax');
+  const totalEl = document.getElementById('total');
+
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+  }
+
+  function updateCartCount() {
+    const count = cart.reduce((sum, item) => sum + item.qty, 0);
+    const cartCountEl = document.querySelector('.cart-count');
+    if (cartCountEl) {
+      cartCountEl.textContent = `Cart (${count})`;
+    }
+  }
+
+  function renderCart() {
+    cartItemsContainer.innerHTML = '';
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+      updateTotals();
+      return;
+    }
+
+    cart.forEach(item => {
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'cart-item flex justify-between items-center border p-4 rounded';
+      itemDiv.setAttribute('data-id', item.id);
+
+      itemDiv.innerHTML = `
+        <div>
+          <h2 class="font-bold">${item.name}</h2>
+          <p class="text-sm text-gray-600">${item.desc || ''}</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="btn-decrease px-2 py-1 bg-gray-200 rounded">-</button>
+          <span class="item-qty px-3">${item.qty}</span>
+          <button class="btn-increase px-2 py-1 bg-gray-200 rounded">+</button>
+          <button class="btn-remove px-2 py-1 bg-red-500 text-white rounded ml-4">Remove</button>
+        </div>
+        <span class="font-semibold">$${(item.price * item.qty).toFixed(2)}</span>
+      `;
+      cartItemsContainer.appendChild(itemDiv);
+    });
+
+    attachEventListeners();
+    updateTotals();
+  }
+
+  function updateTotals() {
+    let subtotal = 0;
+    cart.forEach(item => {
+      subtotal += item.price * item.qty;
+    });
+    const tax = subtotal * TAX_RATE;
+    const total = subtotal + tax;
+
+    subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+    taxEl.textContent = `$${tax.toFixed(2)}`;
+    totalEl.textContent = `$${total.toFixed(2)}`;
+  }
+
+  function attachEventListeners() {
+    document.querySelectorAll('.btn-increase').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const id = this.closest('.cart-item').getAttribute('data-id');
+        const item = cart.find(i => i.id === id);
+        if (item) {
+          item.qty++;
+          saveCart();
+          renderCart();
+        }
+      });
+    });
+
+    document.querySelectorAll('.btn-decrease').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const id = this.closest('.cart-item').getAttribute('data-id');
+        const item = cart.find(i => i.id === id);
+        if (item && item.qty > 1) {
+          item.qty--;
+          saveCart();
+          renderCart();
+        }
+      });
+    });
+
+    document.querySelectorAll('.btn-remove').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const id = this.closest('.cart-item').getAttribute('data-id');
+        cart = cart.filter(i => i.id !== id);
+        saveCart();
+        renderCart();
+      });
+    });
+  }
+
+  addItemForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('item-name').value.trim();
+    const desc = document.getElementById('item-desc').value.trim();
+    const price = parseFloat(document.getElementById('item-price').value);
+    const qty = parseInt(document.getElementById('item-qty').value);
+
+    if (name && desc && price >= 0 && qty > 0) {
+      const newId = name.toLowerCase().replace(/\s+/g, '-') + '-' + Date.now();
+      cart.push({ id: newId, name, desc, price, qty });
+      saveCart();
+      renderCart();
+      addItemForm.reset();
+      document.getElementById('item-qty').value = 1;
+    }
+  });
+
+  renderCart();
+});
+</script>
+<script src="cart.js"></script>
+
+</body>
+</html>

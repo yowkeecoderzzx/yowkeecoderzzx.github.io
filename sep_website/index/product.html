@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Juan Komerse | Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            border: 1px solid #000;
+        }
+        .flip-card {
+            perspective: 1000px;
+            height: 400px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+        .product-image {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .sidebar {
+            background-color: #FFF8F0; /* Cream */
+            border-right: 1px solid #C19A6B; /* Light maroon border */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: {
+                            50: '#FFF8F0',
+                            100: '#FEEBD9',
+                            200: '#F5D5B8',
+                            300: '#EABF97',
+                            400: '#D9A476',
+                            500: '#C19A6B',
+                            600: '#A87E5A',
+                            700: '#8C6548',
+                            800: '#704D36',
+                            900: '#543624',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-amber-50">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="sidebar w-64 h-screen fixed shadow-lg">
+            <div class="p-6">
+                <div class="flex items-center space-x-2 mb-8">
+                    <i class="fas fa-store text-2xl text-maroon-800"></i>
+                    <h1 class="text-2xl font-bold text-maroon-800">Juan Komerse</h1>
+                </div>
+                <nav class="space-y-4">
+                    <a href="index.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-maroon-100 text-maroon-800 font-medium">
+                        <i class="fas fa-home"></i><span>Home</span>
+                    </a>
+                    <a href="product.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-maroon-100 text-maroon-800 font-medium">
+                        <i class="fas fa-box-open"></i><span>Products</span>
+                    </a>
+                    <a href="about.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-maroon-100 text-maroon-800 font-medium">
+                        <i class="fas fa-info-circle"></i><span>About</span>
+                    </a>
+                    <a href="login.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-maroon-100 text-maroon-800 font-medium">
+                        <i class="fas fa-envelope"></i><span>Contact</span>
+                    </a>
+                    <a href="cart.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-maroon-100 text-maroon-800 font-medium">
+                        <i class="fas fa-shopping-cart"></i><span class="cart-count">Cart (0)</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main content wrapper -->
+        <div class="ml-64 flex-1">
+            <!-- Navbar -->
+            <div class="bg-amber-50 text-maroon-800 shadow-sm py-4 px-6 flex justify-between items-center">
+                <div class="relative w-full max-w-xl">
+                    <input type="text" placeholder="Search products..." class="w-full pl-10 pr-4 py-2 rounded-full border border-maroon-200 focus:outline-none focus:ring-2 focus:ring-maroon-300">
+                    <i class="fas fa-search absolute left-3 top-3 text-maroon-600"></i>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <i class="fas fa-bell text-xl text-maroon-800 cursor-pointer hover:text-maroon-600"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
+                    </div>
+                    <div class="h-8 w-8 rounded-full bg-maroon-300 flex items-center justify-center cursor-pointer">
+                        <i class="fas fa-user text-maroon-800"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Content Area -->
+            <div class="p-8">
+                <h2 class="text-3xl font-bold text-maroon-800 mb-4">Featured Products</h2>
+                <p class="text-maroon-700">Explore our curated selection of top-quality products below.</p>
+                <!-- Your product cards or sections go here -->
+                  <!-- Products Section -->
+            <section class="container mx-auto px-6 py-16">
+                <h2 class="text-3xl font-bold text-center mb-12 text-maroon-800">Featured Products</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Product 1 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img1.jpg" 
+                                     alt="VIGAN LONGGANISA" class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">LONGGANISA</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$699.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">VIGAN LONGGANISA</h3>
+                                <p class="mb-4">Vigan longganisa is a unique Filipino pork sausage originating from Vigan City, Ilocos Sur. It's known for its distinct garlicky, salty, and slightly tangy flavor, unlike the sweeter traditional longganisa. The sausages are small, plump, and traditionally enjoyed for breakfast with fried eggs and rice, often dipped in Ilocos vinegar with chili, garlic, and onions. </p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="longganisa" data-name="VIGAN LONGGANISA" data-price="699.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img2.jpg" 
+                                     alt="UBE HALAYA" class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">HALAYA</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$999.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">UBE HALAYA</h3>
+                                <p class="mb-4">Ube halaya or halayang ube (also spelled halea, haleya; from Spanish jalea 'jelly') is a Philippine dessert made from boiled and mashed purple yam (Dioscorea alata, locally known as ube).[1] Ube halaya is the main base in ube/purple yam flavored-pastries and ube ice cream. It can also be incorporated in other desserts such as halo-halo. It is also commonly anglicized as ube jam, or called by its original native name, nilupak na ube.[2]</p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="ubehalaya" data-name="UBE HALAYA" data-price="999.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img3.jpg" 
+                                     alt="ILOCOS EMPANADA" class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">EMPANADA</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$249.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">ILOCOS EMPANADA</h3>
+                                <p class="mb-4">Ilocos empanada is a popular Filipino street food originating from the Ilocos region, particularly Ilocos Norte and Vigan City. It's a deep-fried pastry turnover, known for its crispy, orange-tinged crust (Batac version) or a pale, thinner crust (Vigan version).</p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="empanada" data-name="ILOCOS EMPANADA" data-price="249.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img4.jpg" 
+                                     alt="CHICHARON" class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">CHICHARON</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$199.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">CHICHARON</h3>
+                                <p class="mb-4">Chicharon is a popular Filipino snack, generally known as deep-fried pork rinds, and is also a common ingredient in various Filipino dishes. It's a crunchy, salty, and savory snack often enjoyed as a finger food or alongside drinks, says The Bow Tie Duck Manila</p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="chicharon" data-name="CHICHARON" data-price="199.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img5.jpg" 
+                                     alt="BANIG" class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">BANIG</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$129.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">BANIG</h3>
+                                <p class="mb-4">A banig is a traditional handwoven mat, primarily used for sleeping and sitting in the Philippines. It's made from natural materials like pandan, buri (palm), or tikog (reed grass) leaves, which are dried, dyed, and then woven into intricate patterns. Banigs are a staple in Filipino homes and are also used in various cultural and traditional activities. </p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="banig" data-name="BANIG" data-price="129.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img6.jpg" 
+                                     alt="SOMBRERO" class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">SOMBRERO</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$89.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">SOMBRERO</h3>
+                                <p class="mb-4">sombrero, broad-brimmed high-crowned hat made of felt or straw, worn especially in Mexico and the southwestern United States. The sombrero, its name derived from the Spanish word sombra, meaning “shade,” first appeared in the 15th century</p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="sombrero" data-name="SOMBRERO" data-price="89.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Product 7 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img14.jpg" 
+                                     alt="sili " class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">Etag</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$89.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">SOMBRERO</h3>
+                                <p class="mb-4">sombrero, broad-brimmed high-crowned hat made of felt or straw, worn especially in Mexico and the southwestern United States. The sombrero, its name derived from the Spanish word sombra, meaning “shade,” first appeared in the 15th century</p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="sombrero" data-name="SOMBRERO" data-price="89.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 1 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img7.jpg" 
+                                     alt="Tapuy (Ifugao/Banaue)" class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">Tapuy (Ifugao/Banaue)</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$699.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">VIGAN LONGGANISA</h3>
+                                <p class="mb-4">Vigan longganisa is a unique Filipino pork sausage originating from Vigan City, Ilocos Sur. It's known for its distinct garlicky, salty, and slightly tangy flavor, unlike the sweeter traditional longganisa. The sausages are small, plump, and traditionally enjoyed for breakfast with fried eggs and rice, often dipped in Ilocos vinegar with chili, garlic, and onions. </p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="longganisa" data-name="VIGAN LONGGANISA" data-price="699.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img8.jpg" 
+                                     alt="Bacolod's (misspelled as licolod) sweet piayas" class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">Bacolod's (misspelled as licolod) sweet piayas</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$999.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">UBE HALAYA</h3>
+                                <p class="mb-4">Ube halaya or halayang ube (also spelled halea, haleya; from Spanish jalea 'jelly') is a Philippine dessert made from boiled and mashed purple yam (Dioscorea alata, locally known as ube).[1] Ube halaya is the main base in ube/purple yam flavored-pastries and ube ice cream. It can also be incorporated in other desserts such as halo-halo. It is also commonly anglicized as ube jam, or called by its original native name, nilupak na ube.[2]</p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="ubehalaya" data-name="UBE HALAYA" data-price="999.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img9.jpg" 
+                                     alt="Davao's premium durian products" class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">Davao's premium durian products</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$249.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">ILOCOS EMPANADA</h3>
+                                <p class="mb-4">Ilocos empanada is a popular Filipino street food originating from the Ilocos region, particularly Ilocos Norte and Vigan City. It's a deep-fried pastry turnover, known for its crispy, orange-tinged crust (Batac version) or a pale, thinner crust (Vigan version).</p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="empanada" data-name="ILOCOS EMPANADA" data-price="249.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img10.jpg" 
+                                     alt="Pampanga's world-renowned tocino" class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">Pampanga's world-renowned tocino</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$199.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">CHICHARON</h3>
+                                <p class="mb-4">Chicharon is a popular Filipino snack, generally known as deep-fried pork rinds, and is also a common ingredient in various Filipino dishes. It's a crunchy, salty, and savory snack often enjoyed as a finger food or alongside drinks, says The Bow Tie Duck Manila</p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="chicharon" data-name="CHICHARON" data-price="199.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img11.jpg" 
+                                     alt="Bicol's spicy laing" class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">Bicol's spicy laing</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$129.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">BANIG</h3>
+                                <p class="mb-4">A banig is a traditional handwoven mat, primarily used for sleeping and sitting in the Philippines. It's made from natural materials like pandan, buri (palm), or tikog (reed grass) leaves, which are dried, dyed, and then woven into intricate patterns. Banigs are a staple in Filipino homes and are also used in various cultural and traditional activities. </p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="banig" data-name="BANIG" data-price="129.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img12.jpg" 
+                                     alt="Cebu's crispy lechon" class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">Cebu's crispy lechon</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$89.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">SOMBRERO</h3>
+                                <p class="mb-4">sombrero, broad-brimmed high-crowned hat made of felt or straw, worn especially in Mexico and the southwestern United States. The sombrero, its name derived from the Spanish word sombra, meaning “shade,” first appeared in the 15th century</p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="sombrero" data-name="SOMBRERO" data-price="89.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Product 7 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner bg-white shadow-lg rounded-lg">
+                            <div class="flip-card-front">
+                                <img src="img/img13.jfif" 
+                                     alt="Piyanggang Manok (Tausug, Mindanao)" class="product-image">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2 text-maroon-800">Piyanggang Manok (Tausug, Mindanao)</h3>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-maroon-700 font-bold">$89.99</span>
+                                        <div class="flex text-amber-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back bg-maroon-800 text-amber-50 p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold mb-4">SOMBRERO</h3>
+                                <p class="mb-4">sombrero, broad-brimmed high-crowned hat made of felt or straw, worn especially in Mexico and the southwestern United States. The sombrero, its name derived from the Spanish word sombra, meaning “shade,” first appeared in the 15th century</p>
+                                <button class="add-to-cart bg-amber-50 text-maroon-800 px-4 py-2 rounded-full font-bold hover:bg-amber-100 transition duration-300 mt-4"
+                                    data-id="sombrero" data-name="SOMBRERO" data-price="89.99">
+                                    Add to Cart
+                                </button>
+                                <button class="border border-amber-50 text-amber-50 px-4 py-2 rounded-full font-bold hover:bg-maroon-700 transition duration-300 mt-2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <script src="product.js"></script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
